@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Knights | Kids Chess Academy</title>
+<style>
+:root{--navy:#172554;--blue:#3157d5;--sky:#eaf1ff;--yellow:#ffd166;--coral:#ff7b72;--green:#2a9d78;--ink:#202b45;--muted:#6d7890;--paper:#fff;--bg:#f5f7fc;--line:#e6eaf2;--radius:22px}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-rounded,"Trebuchet MS",system-ui,sans-serif;background:var(--bg);color:var(--ink)}button{font:inherit;cursor:pointer;border:0}button:focus-visible,a:focus-visible{outline:3px solid #f4a261;outline-offset:3px}
+.app{min-height:100vh;display:grid;grid-template-columns:245px 1fr}.sidebar{background:var(--navy);color:white;padding:26px 17px;display:flex;flex-direction:column;gap:28px}.brand{display:flex;align-items:center;gap:11px;padding:0 8px}.brand-mark{display:grid;place-items:center;width:43px;height:43px;background:var(--yellow);border-radius:14px;font-size:26px;color:var(--navy)}.brand strong{display:block;font-size:17px}.brand small{color:#bfcaf1;font-size:11px;letter-spacing:1.4px;text-transform:uppercase}.nav-label{color:#98a8df;font-size:10px;font-weight:800;letter-spacing:1.7px;padding:0 12px;margin-bottom:7px}.nav{display:grid;gap:7px}.nav button{display:flex;align-items:center;gap:12px;color:#dbe3ff;background:transparent;text-align:left;padding:12px;border-radius:13px;font-weight:650}.nav button span{width:22px;text-align:center;font-size:18px}.nav button.active,.nav button:hover{background:#2c3d7d;color:white}.side-card{margin-top:auto;background:#26376d;border-radius:18px;padding:16px}.side-card .mascot{font-size:34px}.side-card p{font-size:12px;line-height:1.5;color:#d5defe}.side-card button{background:var(--yellow);color:var(--navy);border-radius:10px;padding:10px;width:100%;font-weight:800}
+main{min-width:0;padding:25px clamp(18px,3vw,42px) 44px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:28px}.eyebrow{font-size:12px;color:var(--muted);font-weight:700}.topbar h1{font-size:clamp(22px,3vw,30px);margin:4px 0 0;color:var(--navy)}.profile{display:flex;align-items:center;gap:10px;background:white;border:1px solid var(--line);padding:8px 12px;border-radius:16px}.avatar{width:39px;height:39px;border-radius:13px;background:#ffe4b8;display:grid;place-items:center;font-size:23px}.profile strong{font-size:13px;display:block}.profile small{font-size:11px;color:var(--muted)}
+.page{display:none}.page.active{display:block}.hero{background:linear-gradient(115deg,#3157d5,#6c7ff0);color:white;border-radius:26px;padding:clamp(22px,4vw,38px);display:grid;grid-template-columns:1.4fr .6fr;align-items:center;gap:20px;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:260px;height:260px;border:40px solid #ffffff12;border-radius:50%;right:-60px;top:-80px}.hero h2{font-size:clamp(27px,4vw,39px);line-height:1.1;margin:10px 0 13px;max-width:520px}.hero p{color:#e6ebff;max-width:520px;line-height:1.6;margin:0 0 22px}.pill{display:inline-flex;align-items:center;gap:7px;background:#ffffff24;border:1px solid #ffffff30;border-radius:100px;padding:7px 12px;font-size:11px;font-weight:800;letter-spacing:.5px}.btn{background:var(--yellow);color:var(--navy);padding:12px 17px;border-radius:12px;font-weight:850;box-shadow:0 4px 0 #d9a642}.btn.secondary{background:white;color:var(--blue);box-shadow:none;border:1px solid var(--line)}.hero-art{font-size:clamp(95px,14vw,150px);text-align:center;filter:drop-shadow(0 14px 10px #162b7733);z-index:1}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 28px}.stat,.panel,.lesson-card{background:white;border:1px solid var(--line);border-radius:19px;padding:18px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;font-weight:700}.stat-icon{width:34px;height:34px;border-radius:11px;background:var(--sky);display:grid;place-items:center;font-size:17px}.stat strong{display:block;font-size:26px;color:var(--navy);margin:12px 0 4px}.stat small{font-size:11px;color:var(--green);font-weight:750}.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin:0 0 14px}.section-head h2{font-size:20px;color:var(--navy);margin:0}.section-head p{font-size:12px;color:var(--muted);margin:5px 0 0}.text-btn{background:transparent;color:var(--blue);font-weight:800;font-size:12px}.lower-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}.lesson-list{display:grid;gap:11px}.lesson-row{display:flex;align-items:center;gap:13px;border:1px solid var(--line);border-radius:15px;padding:12px}.lesson-icon{width:45px;height:45px;display:grid;place-items:center;border-radius:14px;background:#fff0d0;font-size:23px;flex-shrink:0}.lesson-row:nth-child(2) .lesson-icon{background:#e1f7ee}.lesson-row:nth-child(3) .lesson-icon{background:#ffe5e2}.lesson-copy{flex:1;min-width:0}.lesson-copy strong{display:block;font-size:13px}.lesson-copy small{color:var(--muted);font-size:11px}.progress{height:7px;background:#edf0f7;border-radius:10px;overflow:hidden;margin-top:8px}.progress i{display:block;height:100%;background:var(--blue);border-radius:10px}.lesson-row button{background:var(--sky);color:var(--blue);padding:9px 12px;border-radius:10px;font-size:11px;font-weight:800}.challenge{background:#fff7df;border:1px solid #f4e6b9;border-radius:18px;padding:19px}.challenge .big{font-size:42px}.challenge h3{margin:7px 0;font-size:17px;color:var(--navy)}.challenge p{font-size:12px;line-height:1.6;color:#656b7b}.challenge button{background:var(--navy);color:white;border-radius:11px;padding:11px 14px;font-weight:800}
+.page-title{margin-bottom:20px}.page-title h2{font-size:27px;margin:0 0 7px;color:var(--navy)}.page-title p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px}.board-wrap{background:white;border:1px solid var(--line);border-radius:22px;padding:18px}.board{display:grid;grid-template-columns:repeat(8,1fr);width:100%;max-width:480px;aspect-ratio:1;margin:auto;border:5px solid #28365c;border-radius:7px;overflow:hidden}.square{display:grid;place-items:center;aspect-ratio:1;font-size:clamp(20px,4vw,38px);padding:0;position:relative}.light{background:#f4e8d0}.dark{background:#82a88e}.square.selected{box-shadow:inset 0 0 0 4px #ffd166}.square .coord{position:absolute;left:3px;bottom:1px;font-size:8px;color:#34465e}.board-note{color:var(--muted);font-size:12px;line-height:1.5;margin:12px 0 0}.lesson-card h3{margin:0 0 8px;color:var(--navy)}.lesson-card p{font-size:13px;color:var(--muted);line-height:1.6}.choice-list{display:grid;gap:9px;margin:16px 0}.choice{background:#f6f8fc;border:1px solid var(--line);padding:12px;border-radius:12px;text-align:left;color:var(--ink)}.choice.correct{background:#e1f7ee;border-color:#66c9a6}.choice.wrong{background:#ffe6e3;border-color:#ff9b92}.feedback{min-height:22px;font-size:12px;font-weight:800}.chatbox{display:flex;flex-direction:column;min-height:400px}.chat-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line)}.chat-head .avatar{background:#e4e9ff}.chat-messages{display:flex;flex-direction:column;gap:12px;padding:18px 0;flex:1}.bubble{max-width:85%;padding:12px 14px;border-radius:15px;background:#f0f3fb;font-size:13px;line-height:1.55}.bubble.me{align-self:flex-end;background:#3157d5;color:white}.chat-form{display:flex;gap:8px}.chat-form input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit}.chat-form button{background:var(--blue);color:white;border-radius:12px;padding:0 17px;font-weight:800}.badge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.badge-card{text-align:center;background:white;border:1px solid var(--line);border-radius:17px;padding:18px 10px}.badge-card .medal{font-size:35px}.badge-card strong{display:block;font-size:13px;margin:8px 0 4px}.badge-card small{color:var(--muted);font-size:11px}.locked{filter:grayscale(1);opacity:.55}.parent-metric{padding:20px;border-radius:16px;background:#f6f8fc}.parent-metric strong{font-size:26px;color:var(--navy)}.parent-metric p{margin:6px 0 0;color:var(--muted);font-size:12px}.toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:white;padding:13px 17px;border-radius:13px;box-shadow:0 8px 30px #17255430;display:none;z-index:10;font-size:13px}.toast.show{display:block}
+@media(max-width:1000px){.app{grid-template-columns:205px 1fr}.stats{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr .4fr}.hero-art{font-size:90px}.lower-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.app{display:block}.sidebar{padding:13px 14px;gap:12px}.brand{padding:0}.sidebar .nav-label,.side-card{display:none}.nav{display:flex;overflow:auto;gap:5px}.nav button{white-space:nowrap;padding:9px 11px;font-size:12px}.nav button span{width:auto}.brand-mark{width:36px;height:36px}.brand strong{font-size:14px}.brand small{font-size:9px}.sidebar{position:sticky;top:0;z-index:5}.topbar{margin-bottom:18px}.profile{padding:6px}.profile small{display:none}main{padding:19px 14px 32px}.hero{grid-template-columns:1fr;padding:23px}.hero-art{display:none}.stats{gap:9px;margin:14px 0 23px}.stat{padding:13px}.stat strong{font-size:23px}.two-col{grid-template-columns:1fr}.badge-grid{grid-template-columns:repeat(2,1fr)}.section-head h2{font-size:18px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">♞</div><div><strong>Little Knights</strong><small>Chess Academy</small></div></div>
+  <div><div class="nav-label">LEARN & PLAY</div><nav class="nav" aria-label="Main navigation">
+    <button class="active" data-page="home"><span>⌂</span> Home</button>
+    <button data-page="journey"><span>🗺️</span> Learning Journey</button>
+    <button data-page="practice"><span>♟</span> Practice Board</button>
+    <button data-page="buddy"><span>🤖</span> AI Chess Buddy</button>
+    <button data-page="progress"><span>🏆</span> My Achievements</button>
+    <button data-page="parents"><span>👨‍👩‍👧</span> Parents' Corner</button>
+  </nav></div>
+  <div class="side-card"><div class="mascot">🦉</div><strong>One move at a time!</strong><p>Every chess champion started as a beginner. Keep learning and have fun.</p><button data-go="journey">Continue learning →</button></div>
+</aside>
+<main>
+<header class="topbar"><div><div class="eyebrow">MONDAY • YOUR CHESS ADVENTURE</div><h1 id="greeting">Ready for your next move?</h1></div><div class="profile"><div class="avatar">🧒</div><div><strong>Young Knight</strong><small>Level 3 · Curious Pawn</small></div></div></header>
+
+<section class="page active" id="page-home">
+  <div class="hero"><div><span class="pill">✨ YOUR NEXT ADVENTURE AWAITS</span><h2>Think smart.<br>Play brave. Have fun!</h2><p>Welcome to your chess kingdom! Learn clever moves, solve puzzles, and collect badges as you grow into a confident chess player.</p><button class="btn" data-go="journey">Continue my journey →</button></div><div class="hero-art" aria-hidden="true">♞</div></div>
+  <div class="stats">
+    <div class="stat"><div class="stat-top">Learning points <span class="stat-icon">⭐</span></div><strong id="points">240</strong><small>+20 this week</small></div>
+    <div class="stat"><div class="stat-top">Day streak <span class="stat-icon">🔥</span></div><strong>4 days</strong><small>Keep the streak alive!</small></div>
+    <div class="stat"><div class="stat-top">Lessons done <span class="stat-icon">📚</span></div><strong id="lessonsDone">8 / 12</strong><small>You're making progress</small></div>
+    <div class="stat"><div class="stat-top">Badges earned <span class="stat-icon">🏅</span></div><strong>5</strong><small>More to discover</small></div>
+  </div>
+  <div class="section-head"><div><h2>Pick up where you left off</h2><p>Small steps make great chess players.</p></div><button class="text-btn" data-go="journey">See all lessons →</button></div>
+  <div class="lower-grid">
+    <div class="panel"><div class="lesson-list">
+      <div class="lesson-row"><div class="lesson-icon">♟️</div><div class="lesson-copy"><strong>Meet the Chess Pieces</strong><small>Lesson 1 · Beginner · 5 min</small><div class="progress"><i style="width:100%"></i></div></div><button data-go="journey">Review</button></div>
+      <div class="lesson-row"><div class="lesson-icon">🐎</div><div class="lesson-copy"><strong>The Knight's Special Jump</strong><small>Lesson 9 · Moving pieces · 7 min</small><div class="progress"><i style="width:45%"></i></div></div><button data-go="journey">Resume</button></div>
+      <div class="lesson-row"><div class="lesson-icon">🎯</div><div class="lesson-copy"><strong>Spot the Check!</strong><small>Quick challenge · 3 min</small><div class="progress"><i style="width:0%"></i></div></div><button data-go="practice">Play</button></div>
+    </div></div>
+    <div class="challenge"><div class="big">🧩</div><span class="pill" style="background:#f8e9b7;color:#795b11;border:0">DAILY CHALLENGE</span><h3>Can you think one move ahead?</h3><p>Try today's mini quiz and earn 10 learning points. No pressure—just have fun!</p><button data-go="journey">Start challenge →</button></div>
+  </div>
+</section>
+
+<section class="page" id="page-journey">
+  <div class="page-title"><h2>🗺️ Your Learning Journey</h2><p>Follow the path from curious beginner to confident chess explorer.</p></div>
+  <div class="two-col">
+    <div class="panel"><h3 style="margin-top:0">🌱 Level 1: Chess Basics</h3><p style="color:var(--muted);font-size:13px">Learn the board and meet every piece.</p>
+      <div class="lesson-row"><div class="lesson-icon">♜</div><div class="lesson-copy"><strong>1. The Chessboard</strong><small>Completed · 5 min</small></div><button class="review-lesson" data-lesson="board">Review</button></div>
+      <div class="lesson-row"><div class="lesson-icon">♟</div><div class="lesson-copy"><strong>2. Meet the Pieces</strong><small>Completed · 6 min</small></div><button class="review-lesson" data-lesson="pieces">Review</button></div>
+      <div class="lesson-row"><div class="lesson-icon">👑</div><div class="lesson-copy"><strong>3. The King and Queen</strong><small>Completed · 7 min</small></div><button class="review-lesson" data-lesson="king">Review</button></div>
+    </div>
+    <div class="panel"><h3 style="margin-top:0">🚀 Level 2: Clever Moves</h3><p style="color:var(--muted);font-size:13px">Discover how pieces travel and capture.</p>
+      <div class="lesson-row"><div class="lesson-icon">🐎</div><div class="lesson-copy"><strong>4. The Knight's Jump</strong><small>In progress · 7 min</small><div class="progress"><i style="width:45%"></i></div></div><button class="review-lesson" data-lesson="knight">Learn</button></div>
+      <div class="lesson-row"><div class="lesson-icon">🛡️</div><div class="lesson-copy"><strong>5. Protect Your King</strong><small>Coming up · 8 min</small></div><button class="review-lesson" data-lesson="king-safety">Preview</button></div>
+      <div class="lesson-row"><div class="lesson-icon">🎯</div><div class="lesson-copy"><strong>6. Checkmate Mission</strong><small>Coming up · 10 min</small></div><button class="review-lesson" data-lesson="checkmate">Preview</button></div>
+    </div>
+  </div>
+  <div class="panel" style="margin-top:18px"><h3 id="lessonTitle">⭐ Mini lesson: The Knight's Jump</h3><p id="lessonText" style="line-height:1.7;color:var(--muted)">The knight moves in an L-shape: two squares in one direction, then one square sideways. It is the only piece that can jump over other pieces. Try selecting pieces on the practice board to explore the board.</p><button class="btn" data-go="practice">Try it on the board →</button> <button class="btn secondary" id="completeLesson">Mark lesson complete (+10 points)</button></div>
+</section>
+
+<section class="page" id="page-practice">
+  <div class="page-title"><h2>♟ Practice Board</h2><p>Explore the pieces and get comfortable with the chessboard. Select any piece to highlight it.</p></div>
+  <div class="two-col">
+    <div class="board-wrap"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><strong>Practice position</strong><button class="text-btn" id="resetBoard">Reset board ↻</button></div><div class="board" id="board" aria-label="Interactive demonstration chessboard"></div><p class="board-note">Demo board: selecting a piece highlights it. This prototype does not check legal moves or run a chess engine.</p></div>
+    <div class="lesson-card"><span class="pill" style="background:#eaf1ff;color:#3157d5;border:0">PRACTICE TIP</span><h3 id="pieceTitle">Choose a piece</h3><p id="pieceText">Tap a chess piece on the board to learn its name and how it moves.</p><div class="challenge" style="margin-top:16px"><div style="font-size:30px">💡</div><h3>Think before you move</h3><p>Ask yourself: Is my king safe? Can my piece be captured? Is there a better square?</p></div><button class="btn" style="margin-top:16px" data-go="journey">Explore lessons →</button></div>
+  </div>
+</section>
+
+<section class="page" id="page-buddy">
+  <div class="page-title"><h2>🤖 AI Chess Buddy</h2><p>Ask a chess question. Your friendly practice buddy is here to help you learn.</p></div>
+  <div class="panel chatbox"><div class="chat-head"><div class="avatar">🤖</div><div><strong>Checkers the Chess Bot</strong><div style="font-size:11px;color:var(--green);margin-top:4px">● Practice mode · Ready to help</div></div></div>
+    <div class="chat-messages" id="chatMessages"><div class="bubble">Hi, Young Knight! 👋 I'm Checkers. Ask me about chess pieces, the board, check, or checkmate!</div><div class="bubble">Try asking: <strong>“How does the knight move?”</strong></div></div>
+    <form class="chat-form" id="chatForm"><input id="chatInput" placeholder="Ask me a chess question..." aria-label="Your chess question" required><button type="submit">Send ↗</button></form>
+  </div>
+  <p style="font-size:11px;color:var(--muted);margin-top:12px">Prototype note: replies are predefined examples, not generated by a live AI service.</p>
+</section>
+
+<section class="page" id="page-progress">
+  <div class="page-title"><h2>🏆 My Achievements</h2><p>Celebrate your effort, curiosity, and practice—not just winning.</p></div>
+  <div class="stats"><div class="stat"><div class="stat-top">Total points <span class="stat-icon">⭐</span></div><strong id="points2">240</strong><small>Keep learning</small></div><div class="stat"><div class="stat-top">Lessons completed <span class="stat-icon">📚</span></div><strong id="lessonsDone2">8</strong><small>Out of 12 lessons</small></div><div class="stat"><div class="stat-top">Practice sessions <span class="stat-icon">♟️</span></div><strong>12</strong><small>You're building a habit</small></div><div class="stat"><div class="stat-top">Current streak <span class="stat-icon">🔥</span></div><strong>4 days</strong><small>Fantastic effort!</small></div></div>
+  <div class="section-head"><div><h2>Your badge collection</h2><p>Every badge tells a story about what you've learned.</p></div></div>
+  <div class="badge-grid"><div class="badge-card"><div class="medal">🌟</div><strong>First Steps</strong><small>Completed first lesson</small></div><div class="badge-card"><div class="medal">🐎</div><strong>Knight Explorer</strong><small>Practiced knight moves</small></div><div class="badge-card"><div class="medal">🔥</div><strong>Four-Day Streak</strong><small>Practiced 4 days in a row</small></div><div class="badge-card"><div class="medal">🧠</div><strong>Sharp Thinker</strong><small>Solved a puzzle</small></div><div class="badge-card"><div class="medal">🤝</div><strong>Good Sport</strong><small>Played fair and kindly</small></div><div class="badge-card locked"><div class="medal">👑</div><strong>Checkmate Champion</strong><small>Still to unlock</small></div></div>
+</section>
+
+<section class="page" id="page-parents">
+  <div class="page-title"><h2>👨‍👩‍👧 Parents' Corner</h2><p>A simple overview of the learning experience and ways to support your young player.</p></div>
+  <div class="two-col"><div class="panel"><h3 style="margin-top:0">📈 Learning snapshot</h3><div class="parent-metric"><strong>8 of 12 lessons</strong><p>Lessons completed in the sample profile</p><div class="progress"><i style="width:67%"></i></div></div><div class="parent-metric" style="margin-top:12px"><strong>10–15 minutes</strong><p>Suggested short practice session</p></div><div class="parent-metric" style="margin-top:12px"><strong>Curiosity first</strong><p>Celebrate good thinking and persistence, not only wins.</p></div></div>
+  <div class="panel"><h3 style="margin-top:0">💛 Helpful tips for families</h3><div class="lesson-list"><div class="lesson-row"><div class="lesson-icon">⏱️</div><div class="lesson-copy"><strong>Keep sessions short</strong><small>Little and often is easier to sustain.</small></div></div><div class="lesson-row"><div class="lesson-icon">💬</div><div class="lesson-copy"><strong>Ask “What could happen next?”</strong><small>Encourage planning without giving the answer.</small></div></div><div class="lesson-row"><div class="lesson-icon">🎉</div><div class="lesson-copy"><strong>Celebrate effort</strong><small>Every thoughtful move is progress.</small></div></div></div></div></div>
+  <p style="font-size:12px;color:var(--muted);margin-top:18px">All names, statistics, progress, and badges shown here are sample prototype data. No child profile or progress is stored on a server.</p>
+</section>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+const pages = [...document.querySelectorAll('.page')];
+function showPage(name){pages.forEach(p=>p.classList.toggle('active',p.id==='page-'+name));document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===name));const titles={home:'Ready for your next move?',journey:'Your next chess adventure!',practice:'Let’s explore the chessboard!',buddy:'Meet your Chess Buddy!',progress:'Look how far you’ve come!',parents:'A great team makes great learners.'};document.getElementById('greeting').textContent=titles[name]||'Welcome, Young Knight!';window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.go)));
+let points=240, lessons=8;
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2500)}
+const lessonCopy={
+ board:['The Chessboard','A chessboard has 64 squares: 8 rows and 8 columns. The light square belongs at each player’s right-hand corner.'],
+ pieces:['Meet the Pieces','Each player starts with 16 pieces: one king, one queen, two rooks, two bishops, two knights, and eight pawns.'],
+ king:['The King and Queen','The king moves one square in any direction. The queen can move any number of squares in a straight line or diagonal, if the path is clear.'],
+ knight:['The Knight’s Jump','The knight moves in an L-shape: two squares in one direction, then one square sideways. It can jump over other pieces.'],
+ 'king-safety':['Protect Your King','Keep an eye on checks and avoid leaving your king exposed. When in check, you must make a move that gets your king out of check.'],
+ checkmate:['Checkmate Mission','Checkmate happens when the king is in check and there is no legal move to escape. It ends the game.']
+};
+document.querySelectorAll('.review-lesson').forEach(b=>b.addEventListener('click',()=>{const data=lessonCopy[b.dataset.lesson]||['Preview lesson','This lesson will be available in a future version of the academy.'];document.getElementById('lessonTitle').textContent='⭐ Mini lesson: '+data[0];document.getElementById('lessonText').textContent=data[1];toast('Lesson opened: '+data[0]);}));
+document.getElementById('completeLesson').addEventListener('click',()=>{points+=10;lessons=Math.min(12,lessons+1);document.getElementById('points').textContent=points;document.getElementById('points2').textContent=points;document.getElementById('lessonsDone').textContent=lessons+' / 12';document.getElementById('lessonsDone2').textContent=lessons;toast('Great work! +10 learning points ⭐');});
+const startBoard=[
+['♜','♞','♝','♛','♚','♝','♞','♜'],
+['♟','♟','♟','♟','♟','♟','♟','♟'],
+['','','','','','','',''],['','','','','','','',''],
+['','','','','','','',''],['','','','','','','',''],
+['♙','♙','♙','♙','♙','♙','♙','♙'],
+['♖','♘','♗','♕','♔','♗','♘','♖']];
+const pieceInfo={
+'♔':['White King','The king moves one square in any direction. Keep it safe!'],'♚':['Black King','The king moves one square in any direction. A king may never move into check.'],
+'♕':['White Queen','The queen moves any distance horizontally, vertically, or diagonally when the path is clear.'],'♛':['Black Queen','The queen moves along ranks, files, and diagonals.'],
+'♖':['White Rook','The rook moves any number of squares horizontally or vertically, if nothing blocks it.'],'♜':['Black Rook','The rook moves in straight lines along rows and columns.'],
+'♗':['White Bishop','The bishop moves diagonally any number of squares when the path is clear.'],'♝':['Black Bishop','The bishop travels diagonally. Each bishop stays on its starting square color.'],
+'♘':['White Knight','The knight moves in an L-shape and can jump over pieces.'],'♞':['Black Knight','The knight moves two squares one way and one square sideways, jumping over pieces.'],
+'♙':['White Pawn','A pawn usually moves forward one square and captures diagonally. On its first move it may move two squares.'],'♟':['Black Pawn','A pawn moves toward the opposite side and captures diagonally.']
+};
+const boardEl=document.getElementById('board');let selected=null;
+function renderBoard(){boardEl.innerHTML='';startBoard.forEach((row,r)=>row.forEach((piece,c)=>{const btn=document.createElement('button');btn.className='square '+((r+c)%2?'dark':'light');btn.type='button';btn.textContent=piece;btn.setAttribute('aria-label',piece?(pieceInfo[piece]?.[0]||'Chess piece'):'Empty square');if(selected===r+'-'+c)btn.classList.add('selected');if(c===0){const coord=document.createElement('span');coord.className='coord';coord.textContent=8-r;btn.appendChild(coord)}btn.addEventListener('click',()=>{selected=r+'-'+c;renderBoard();if(piece&&pieceInfo[piece]){document.getElementById('pieceTitle').textContent=pieceInfo[piece][0];document.getElementById('pieceText').textContent=pieceInfo[piece][1]}else{document.getElementById('pieceTitle').textContent='An empty square';document.getElementById('pieceText').textContent='This square is empty in the starting position. In a real chess game, you can move a piece here only if the move is legal.'}});boardEl.appendChild(btn)}))}
+renderBoard();document.getElementById('resetBoard').addEventListener('click',()=>{selected=null;renderBoard();document.getElementById('pieceTitle').textContent='Choose a piece';document.getElementById('pieceText').textContent='Tap a chess piece on the board to learn its name and how it moves.';toast('Board reset')});
+const canned=[
+[/knight|horse|jump/i,'The knight moves in an L-shape: two squares in one direction and one square sideways. It can jump over other pieces. 🐎'],
+[/queen/i,'The queen can move any number of squares horizontally, vertically, or diagonally, as long as the path is clear. 👑'],
+[/king/i,'The king moves one square in any direction. Protect your king carefully—if it is checkmated, the game is over!'],
+[/pawn/i,'Pawns usually move one square forward, but on their first move they can move two. They capture one square diagonally. ♟️'],
+[/checkmate|mate/i,'Checkmate means the king is in check and there is no legal move to escape. That ends the game! 🏁'],
+[/check\b/i,'Check means your king is under attack. You must respond by moving the king, blocking the attack, or capturing the attacking piece—if legal.'],
+[/board|square/i,'A chessboard has 64 squares arranged in 8 rows and 8 columns, alternating light and dark squares.'],
+[/hello|hi|hey/i,'Hello, Young Knight! 👋 Ready to sharpen your chess skills? Ask me about a piece or a chess rule.']
+];
+document.getElementById('chatForm').addEventListener('submit',e=>{e.preventDefault();const input=document.getElementById('chatInput');const q=input.value.trim();if(!q)return;addBubble(q,'me');input.value='';const match=canned.find(([re])=>re.test(q));const answer=match?match[1]:'Great question! ♟️ Start by looking at how the pieces move, keep your king safe, and think about what your opponent might do next. This demo buddy has a small set of sample answers.';setTimeout(()=>addBubble(answer,''),220)});
+function addBubble(text,kind){const b=document.createElement('div');b.className='bubble'+(kind?' '+kind:'');b.textContent=text;const box=document.getElementById('chatMessages');box.appendChild(b);box.scrollTop=box.scrollHeight}
+</script>
+</body>
+</html>
