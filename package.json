@@ -1,0 +1,17 @@
+{
+  "name": "kids-chess-academy",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev:web": "pnpm --filter @kids-chess-academy/web dev",
+    "dev:api": "pnpm --filter @kids-chess-academy/api start:dev",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "test": "pnpm -r test",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
