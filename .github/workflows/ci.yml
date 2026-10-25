@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   web:
-    name: Web typecheck and build
+    name: Web typecheck, build, and smoke tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,12 +20,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # The lockfile is not committed yet; switch to frozen installs after it is generated.
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm --filter @kids-chess-academy/web typecheck
       - run: pnpm --filter @kids-chess-academy/web build
+      - run: pnpm --filter @kids-chess-academy/web test
 
   api:
-    name: API typecheck and build
+    name: API typecheck, build, and health tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -35,6 +37,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # The lockfile is not committed yet; switch to frozen installs after it is generated.
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm --filter @kids-chess-academy/api typecheck
       - run: pnpm --filter @kids-chess-academy/api build
+      - run: pnpm --filter @kids-chess-academy/api test
