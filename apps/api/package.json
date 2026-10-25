@@ -7,7 +7,7 @@
     "start:dev": "nest start --watch",
     "build": "nest build",
     "lint": "tsc --noEmit",
-    "test": "node -e \"console.log('API tests will be added with the first vertical slice.')\"",
+    "test": "pnpm build && node --test test/*.test.cjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
