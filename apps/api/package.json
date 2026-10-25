@@ -1,0 +1,28 @@
+{
+  "name": "@kids-chess-academy/api",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "build": "nest build",
+    "lint": "tsc --noEmit",
+    "test": "node -e \"console.log('API tests will be added with the first vertical slice.')\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.12",
+    "@nestjs/core": "^11.0.12",
+    "@nestjs/platform-express": "^11.0.12",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.5",
+    "@nestjs/schematics": "^11.0.5",
+    "@nestjs/testing": "^11.0.5",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.10",
+    "typescript": "~5.8.3"
+  }
+}

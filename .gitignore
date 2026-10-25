@@ -1,0 +1,31 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+coverage/
+.pnpm-store/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# Android / Gradle
+.gradle/
+**/build/
+local.properties
+*.jks
+*.keystore
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*

@@ -1,0 +1,40 @@
+name: Foundation CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, "phase-1/**"]
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    name: Web typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm --filter @kids-chess-academy/web typecheck
+      - run: pnpm --filter @kids-chess-academy/web build
+
+  api:
+    name: API typecheck and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.10.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm --filter @kids-chess-academy/api typecheck
+      - run: pnpm --filter @kids-chess-academy/api build
