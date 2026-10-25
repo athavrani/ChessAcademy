@@ -13,11 +13,10 @@ export class HealthController {
 
   @Get("ready")
   getReadiness() {
-    // Database and external dependency checks will be added when those
-    // integrations are provisioned. This endpoint currently confirms only
-    // that the API process is responding.
+    // A readiness probe must not advertise production readiness while
+    // required infrastructure integrations are still unconfigured.
     return {
-      status: "ready",
+      status: "not-ready",
       checks: {
         database: "not-configured",
         identityProvider: "not-configured",
