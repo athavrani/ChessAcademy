@@ -5,7 +5,7 @@ A mastery-based chess learning experience for ages 5–13, designed for web and 
 ## Project status
 
 - **Phase 0:** Product requirements, proposed architecture, prototype audit, and roadmap are documented.
-- **Phase 1:** Initial web shell and NestJS API bootstrap are on the `phase-1/foundation` branch.
+- **Phase 1:** Web shell and NestJS API bootstrap have been merged to `main`; reliability work is in review on `phase-1/reliable-builds`.
 - **Not production-ready:** No authentication, database, saved learner progress, legal chess board, live AI coach, voice integration, or Android app is implemented yet.
 - **No real child data:** Use synthetic fixtures only during development.
 
@@ -58,7 +58,7 @@ The API listens on port 3000 by default. Current endpoints:
 - `GET /api/v1/health` — process liveness
 - `GET /api/v1/health/ready` — current foundation readiness status
 
-The readiness endpoint explicitly reports that the database, identity provider, and coach provider are not configured. It does not prove those dependencies are healthy.
+The readiness endpoint reports `not-ready` while the database, identity provider, and coach provider are not configured. Liveness only confirms that the API process is responding.
 
 ## Workspace commands
 
@@ -69,7 +69,7 @@ pnpm lint
 pnpm test
 ```
 
-The current test scripts are placeholders until the first vertical slice is implemented. Meaningful unit, API, chess-rule, accessibility, and end-to-end tests are required before calling the product an MVP.
+The current baseline includes Node.js test-runner checks for API health response contracts and the web preview's non-production disclosure. These are smoke/contract checks, not a substitute for integration, chess-rule, accessibility, or end-to-end coverage.
 
 ## Engineering guardrails
 
@@ -82,4 +82,4 @@ The current test scripts are placeholders until the first vertical slice is impl
 
 ## Current next milestone
 
-Complete the Android shell and reproducible lockfile, run the web/API CI checks, then design the first vertical slice: one approved lesson, legal chess practice, one validated puzzle, and persisted progress behind authentication and authorization.
+Commit the pnpm lockfile and switch CI to frozen installs, verify web/API CI, then add the Android shell. After that, design the first vertical slice: one approved lesson, legal chess practice, one validated puzzle, and persisted progress behind authentication and authorization.
