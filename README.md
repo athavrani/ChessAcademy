@@ -4,13 +4,13 @@ A mastery-based chess learning experience for ages 5–13, designed for web and 
 
 ## Project status
 
-- **Phase 0:** Product requirements, proposed architecture, and prototype audit are documented.
-- **Phase 1 foundation:** React/Vite web shell, NestJS API bootstrap, health/readiness tests, and smoke tests are merged to `main`.
-- **Repository instructions:** See [AGENTS.md](AGENTS.md) for rules that coding agents must follow.
-- **Documentation pack:** Product, curriculum, architecture, API conventions, data model, privacy/security, test strategy, Android plan, and local development/release guidance are documented below.
+- **Phase 0:** Product requirements, architecture proposal, prototype audit, and curriculum proposal are documented; stakeholder approval remains open.
+- **Phase 1 foundation:** React/Vite web shell, NestJS API bootstrap, health/readiness tests, smoke tests, and GitHub Actions checks are merged to `main`. Lockfile hardening and Android shell remain outstanding.
+- **Phases 2–6:** Detailed implementation plans are documented; these phases are not represented as implemented.
+- **Repository instructions:** See [AGENTS.md](AGENTS.md) for coding-agent guardrails.
 - **Not production-ready:** Authentication, database persistence, legal chess gameplay, live AI coaching, voice integration, and the native Android app are not yet implemented.
 - **No real child data:** Use synthetic fixtures only during development.
-- **Lockfile:** A committed and validated `pnpm-lock.yaml` is still a prerequisite for switching CI to frozen installs.
+- **Lockfile:** A committed and validated `pnpm-lock.yaml` is still required before switching CI to frozen installs.
 
 ## Documentation index
 
@@ -18,6 +18,7 @@ A mastery-based chess learning experience for ages 5–13, designed for web and 
 - [Product requirements](docs/PRODUCT_REQUIREMENTS.md)
 - [114-hour curriculum blueprint — proposed, not approved](docs/CURRICULUM_BLUEPRINT.md)
 - [Existing prototype audit](docs/PHASE_0_PROTOTYPE_AUDIT.md)
+- [Phase 0 product and architecture plan](docs/PHASE_0_PRODUCT_AND_ARCHITECTURE_PLAN.md)
 
 ### Architecture and engineering
 - [Architecture overview](docs/ARCHITECTURE.md)
@@ -26,9 +27,16 @@ A mastery-based chess learning experience for ages 5–13, designed for web and 
 - [Logical data model](docs/DATA_MODEL.md)
 - [Agent instructions](AGENTS.md)
 
-### Delivery and quality
-- [Implementation roadmap](docs/IMPLEMENTATION_ROADMAP.md)
-- [Phase 1 foundation plan](docs/PHASE_1_FOUNDATION_PLAN.md)
+### Phase-by-phase implementation plans
+- [Phase 1 — Foundation](docs/PHASE_1_FOUNDATION_PLAN.md)
+- [Phase 2 — Foundations vertical slice](docs/PHASE_2_FOUNDATIONS_VERTICAL_SLICE.md)
+- [Phase 3 — Curriculum and mastery](docs/PHASE_3_CURRICULUM_AND_MASTERY.md)
+- [Phase 4 — AI coach and optional voice](docs/PHASE_4_AI_COACH_AND_VOICE.md)
+- [Phase 5 — Parent experience](docs/PHASE_5_PARENT_EXPERIENCE.md)
+- [Phase 6 — Hardening and pilot readiness](docs/PHASE_6_HARDENING_AND_PILOT_READINESS.md)
+- [Overall implementation roadmap](docs/IMPLEMENTATION_ROADMAP.md)
+
+### Quality, safety, and operations
 - [Test strategy and quality gates](docs/TEST_STRATEGY.md)
 - [Local development and release workflow](docs/LOCAL_DEVELOPMENT_AND_RELEASE.md)
 - [Android implementation plan](docs/ANDROID_IMPLEMENTATION_PLAN.md)
